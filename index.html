@@ -3,213 +3,268 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cultivando o Futuro: Horta Inteligente e Captação de Água</title>
+    <title>Cultivando o Futuro - Projeto Agrinho</title>
     <style>
-        :root {
-            --primary: #2e7d32;
-            --primary-light: #4caf50;
-            --secondary: #0288d1;
-            --background: #f9fbe7;
-            --card-bg: #ffffff;
-            --text: #263238;
+        /* Reset e Configurações Básicas */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--background);
-            color: var(--text);
-            margin: 0;
-            padding: 0;
+            background-color: #f4f7f5;
+            color: #333;
             line-height: 1.6;
         }
 
+        /* Cores Temáticas */
+        :root {
+            --verde-escuro: #1b4d3e;
+            --verde-principal: #2e7d32;
+            --verde-claro: #a5d6a7;
+            --terra: #8d6e63;
+            --laranja-destaque: #f57c00;
+            --branco: #ffffff;
+        }
+
+        /* Cabeçalho / Hero Banner */
         header {
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
-            color: white;
+            background: linear-gradient(rgba(27, 77, 62, 0.85), rgba(27, 77, 62, 0.95)), url('https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?auto=format&fit=crop&q=80&w=1000') no-repeat center center/cover;
+            color: var(--branco);
             text-align: center;
-            padding: 3rem 1rem;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            padding: 80px 20px;
+            border-bottom: 8px solid var(--laranja-destaque);
+        }
+
+        .agrinho-tag {
+            background-color: var(--laranja-destaque);
+            color: var(--branco);
+            padding: 6px 15px;
+            font-weight: bold;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         header h1 {
-            margin: 0;
-            font-size: 2.5rem;
+            font-size: 2.8rem;
+            margin-bottom: 10px;
         }
 
         header p {
-            margin: 0.5rem 0 0 0;
             font-size: 1.2rem;
-            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto 20px auto;
+            font-weight: 300;
         }
 
+        .lema {
+            font-style: italic;
+            color: var(--verde-claro);
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        /* Container Principal */
         main {
-            max-width: 900px;
-            margin: 2rem auto;
-            padding: 0 1rem;
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
         }
 
-        .intro {
-            background-color: var(--card-bg);
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            border-left: 5px solid var(--secondary);
-            margin-bottom: 2.5rem;
+        /* Resumo da Proposta */
+        .resumo-box {
+            background-color: var(--branco);
+            border-left: 5px solid var(--verde-principal);
+            padding: 25px;
+            border-radius: 4px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
         }
 
-        .intro h2 {
-            color: var(--primary);
-            margin-top: 0;
+        .resumo-box h2 {
+            color: var(--verde-escuro);
+            margin-bottom: 10px;
         }
 
-        .timeline-title {
-            color: var(--primary);
-            text-align: center;
-            margin-bottom: 2rem;
+        /* Linha do Tempo / Etapas */
+        .etapas-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
         }
 
-        .timeline {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
+        .etapa-card {
+            background-color: var(--branco);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border: 1px solid #e0e0e0;
+            transition: transform 0.2s;
         }
 
-        .step {
-            background-color: var(--card-bg);
-            padding: 1.5rem 2rem;
-            border-radius: 12px;
-            box-shadow: 0 3px 6px rgba(0,0,0,0.05);
-            border-top: 4px solid var(--primary-light);
-            position: relative;
-            transition: transform 0.2s ease;
-        }
-
-        .step:hover {
+        .etapa-card:hover {
             transform: translateY(-2px);
-            box-shadow: 0 5px 12px rgba(0,0,0,0.1);
         }
 
-        .step-header {
+        .etapa-header {
+            background-color: var(--verde-escuro);
+            color: var(--branco);
+            padding: 15px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 0.5rem;
         }
 
-        .step-title {
-            margin: 0;
-            color: var(--primary);
+        .etapa-header h3 {
             font-size: 1.3rem;
         }
 
-        .badge {
-            background-color: var(--secondary);
-            color: white;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
+        .semana-badge {
+            background-color: var(--terra);
+            padding: 4px 10px;
+            border-radius: 4px;
             font-size: 0.85rem;
             font-weight: bold;
         }
 
-        .action-box {
-            background-color: #f1f8e9;
-            border-radius: 6px;
-            padding: 1rem;
-            margin-top: 1rem;
-            border-left: 3px solid var(--primary-light);
+        .etapa-body {
+            padding: 20px;
         }
 
-        .action-box strong {
-            color: var(--primary);
+        .etapa-body ul {
+            list-style-type: none;
+            margin-bottom: 15px;
         }
 
-        footer {
-            text-align: center;
-            padding: 2rem;
-            background-color: #1b5e20;
-            color: white;
-            margin-top: 4rem;
+        .etapa-body ul li {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .etapa-body ul li::before {
+            content: "🌱";
+            position: absolute;
+            left: 0;
+            top: 2px;
             font-size: 0.9rem;
+        }
+
+        .acao-pratica {
+            background-color: #f1f8e9;
+            border: 1px dashed var(--verde-principal);
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 15px;
+        }
+
+        .acao-pratica strong {
+            color: var(--verde-principal);
+            display: block;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+        }
+
+        /* Fórmulas Matemáticas em Destaque */
+        .formula {
+            background-color: #efebe9;
+            color: var(--terra);
+            font-family: 'Courier New', Courier, monospace;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        /* Rodapé */
+        footer {
+            background-color: var(--verde-escuro);
+            color: var(--branco);
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 60px;
+            font-size: 0.9rem;
+        }
+
+        footer p {
+            margin-bottom: 5px;
+        }
+
+        /* Responsividade */
+        @media (min-width: 768px) {
+            .etapas-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
     </style>
 </head>
 <body>
 
     <header>
+        <div class="agrinho-tag">Concurso Agrinho 2026</div>
         <h1>Cultivando o Futuro</h1>
-        <p>Horta Inteligente e Captação de Água da Chuva</p>
+        <p>Horta Inteligente e Captação de Água da Chuva na Escola</p>
+        <div class="lema">"Agro Forte, Futuro Sustentável: O equilíbrio entre produção e meio ambiente"</div>
     </header>
 
     <main>
-        <section class="intro">
+        
+        <section class="resumo-box">
             <h2>Resumo da Proposta</h2>
-            <p>Os estudantes criarão um sistema sustentável dentro da escola que une a captação e o reaproveitamento da água da chuva com o cultivo de uma horta orgânica, utilizando materiais recicláveis.</p>
+            <p>Os estudantes criarão um sistema sustentável dentro da escola que une a captação e o reaproveitamento da água da chuva com o cultivo de uma horta orgânica, utilizando materiais recicláveis como base para a estrutura.</p>
         </section>
 
-        <h2 class="timeline-title">Etapas de Execução do Projeto</h2>
+        <h2 style="color: var(--verde-escuro); margin-bottom: 20px;">Etapas de Execução do Projeto</h2>
+        
+        <section class="etapas-container">
+            
+            <article class="etapa-card">
+                <div class="etapa-header">
+                    <h3>1. Sensibilização e Pesquisa</h3>
+                    <span class="semana-badge">Semana 1</span>
+                </div>
+                <div class="etapa-body">
+                    <ul>
+                        <li>Discussão em sala sobre a importância do agronegócio sustentável.</li>
+                        <li>Estudo sobre o uso consciente da água e a segurança alimentar.</li>
+                    </ul>
+                    <div class="acao-pratica">
+                        <strong>Ação Prática</strong>
+                        Palestra com profissionais da área agrícola local ou especialistas em meio ambiente (o Sindicato Rural ou SENAR regional são grandes aliados).
+                    </div>
+                </div>
+            </article>
 
-        <section class="timeline">
-            <div class="step">
-                <div class="step-header">
-                    <h3 class="step-title">1. Sensibilização e Pesquisa</h3>
-                    <span class="badge">Semana 1</span>
+            <article class="etapa-card">
+                <div class="etapa-header">
+                    <h3>2. Planejamento e Desenho</h3>
+                    <span class="semana-badge">Semana 2</span>
                 </div>
-                <p>Discussão em sala sobre a importância do agronegócio sustentável, uso consciente da água e segurança alimentar.</p>
-                <div class="action-box">
-                    <strong>Ação Prática:</strong> Palestra com profissionais da área agrícola local ou especialistas em meio ambiente (o Sindicato Rural ou SENAR regional são grandes aliados).
+                <div class="etapa-body">
+                    <ul>
+                        <li>Medição do espaço disponível na escola e desenho do mapa da horta.</li>
+                        <li>Aplicação de conceitos matemáticos: Cálculo de área e volume <span class="formula">(Área = comprimento × largura)</span>.</li>
+                    </ul>
+                    <div class="acao-pratica">
+                        <strong>Ação Prática</strong>
+                        Planejamento da instalação de um sistema de calhas simples (feitas com garrafas PET) para direcionar a água da chuva até o reservatório.
+                    </div>
                 </div>
-            </div>
+            </article>
 
-            <div class="step">
-                <div class="step-header">
-                    <h3 class="step-title">2. Planejamento e Desenho</h3>
-                    <span class="badge">Semana 2</span>
+            <article class="etapa-card">
+                <div class="etapa-header">
+                    <h3>3. Mão na Massa</h3>
+                    <span class="semana-badge">Semanas 3 e 4</span>
                 </div>
-                <p>Os alunos medem o espaço disponível na escola e desenham o mapa da horta, aplicando conceitos matemáticos reais.</p>
-                <p><em>Cálculo de área e volume:</em> Área = comprimento × largura.</p>
-                <div class="action-box">
-                    <strong>Ação Prática:</strong> Planejamento da instalação de um sistema de calhas simples (feitas com garrafas PET) para direcionar a água da chuva até um reservatório.
-                </div>
-            </div>
-
-            <div class="step">
-                <div class="step-header">
-                    <h3 class="step-title">3. Mão na Massa</h3>
-                    <span class="badge">Semanas 3 e 4</span>
-                </div>
-                <p>Montagem da estrutura física utilizando a reciclagem como pilar fundamental.</p>
-                <ul>
-                    <li><strong>Construção dos canteiros:</strong> Podem ser suspensos usando pneus usados ou garrafas PET.</li>
-                    <li><strong>Preparação do solo:</strong> Enriquecimento da terra através de compostagem orgânica.</li>
-                    <li><strong>Sistema de Irrigação:</strong> Instalação do sistema de gotejamento artesanal conectado diretamente ao reservatório de água da chuva.</li>
-                </ul>
-                <div class="action-box">
-                    <strong>Ação Prática:</strong> Escolha de hortaliças regionais e início do cultivo acompanhado (diário ou semanal) por parte dos alunos.
-                </div>
-            </div>
-
-            <div class="step">
-                <div class="step-header">
-                    <h3 class="step-title">4. Avaliação e Divulgação</h3>
-                    <span class="badge">Semana 5</span>
-                </div>
-                <p>Medição científica dos resultados gerados pelo projeto na comunidade escolar.</p>
-                <ul>
-                    <li>Análise da qualidade do crescimento das plantas.</li>
-                    <li>Cálculo estimado da economia de água obtida em relação à rede pública.</li>
-                </ul>
-                <div class="action-box">
-                    <strong>Ação Prática:</strong> Produção de material final para submissão ao concurso Agrinho (redação, desenho ou relatório de pesquisa, dependendo da categoria).
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <p>Projeto Agrinho 2026 — Cultivando o Futuro: Horta Inteligente e Captação de Água da Chuva</p>
-    </footer>
-
-</body>
-</html>
+                <div class="etapa-body">
+                    <ul>
+                        <li><strong>Construção dos canteiros:</strong> Suspensos usando pneus usados ou garrafas PET.</li>
+                        <li><strong>Preparação do solo:</strong> Enriqu
